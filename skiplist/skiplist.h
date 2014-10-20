@@ -1,9 +1,13 @@
 
 typedef struct Node {
 	int key;
-	struct Node *down;
+	struct Node *below;
 	struct Node *next;
 } Node;
+
+/**
+ * Maximum height 
+ */
 
 /**
  * Create a skip list, return the top-left
@@ -23,6 +27,8 @@ void free_skiplist(Node *slist);
  * the node with largest key value
  * that is less or equal to the given
  * key.
+ * The returned node is in the
+ * bottom list.
  */
 Node* search(Node *slist, int key);
 
@@ -30,3 +36,8 @@ Node* search(Node *slist, int key);
  * Insert a key to the skiplist.
  */
 void insert(Node *slist, int key);
+
+/**
+ * Delete a key from the skiplist
+ */
+void delete(Node *slist, int key);
