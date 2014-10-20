@@ -124,24 +124,23 @@ void delete(Node *slist, int key) {
 		// If found at the current row
 		if (curr->key == key) {
 			// Delete all nodes below the curr
-			while (curr) {
+			while (curr && prev) {
+				// Move prev to just one before curr
+				while (prev->next != curr) {
+					prev = prev->next;
+				}
 				// By-pass the curr node
 				prev->next = curr->next;
 				temp = curr;
 				// Move down a level
 				curr = curr->below;
 				prev = prev->below;
-				// Move prev to just one before curr
-				while (prev->next != curr) {
-					prev = prev->next;
-				}
 				// Delete
 				free(temp);
 			}
 			break;
 		}
 	}
-	printf("Key %d not found!\n", key);
 }
 
 void print_skiplist(Node *slist, int height) {
@@ -151,12 +150,14 @@ void print_skiplist(Node *slist, int height) {
 	while (curr_first) {
 		curr = curr_first;
 		// Print all node at this row
+		printf("-nil->");
+		curr = curr->next;
 		while (curr->next) {
 			printf("%d->", curr->key);
 			curr = curr->next;
 		}
 		// Print the last one
-		printf("%d\n", curr->key);
+		printf("nil\n");
 		curr_first = curr_first->below;
 	}
 }
