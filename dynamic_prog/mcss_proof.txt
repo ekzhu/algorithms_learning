@@ -1,0 +1,30 @@
+Maximum Contiguous Subsequence Sum Problem.
+
+Solved using dynamic programming.
+
+Sketch of the proof:
+
+Let $b_i$ be the maximum contiguous subsequence sum that includes the element
+at the current position $i$.
+Let $ans$ be the maximum contiguous subsequence sum (MCSS) seen so far,
+may or may not include the element at current position $i$.
+
+Claim the loop invariant: $b_i = max(\pi_{i}, b_{i-1} + \pi_{i}) \forall i > 0$ and 
+$b_0 = \pi_{i}$.
+
+The base case. $i = 0$, and $b_0 = \pi_{i}$. We are good.
+
+At any $i > 0$, two cases:
+1. If $\pi_{i} + b_{i-1} > b_{i-1}$, then we can go head and set 
+$b_i = \pi_{i} + b_{i-1}$ and $i = i + 1, ans = max(ans, b_i)$. 
+Since the current element
+$\pi_{i}$ increases the current maximum contiguous subsequence sum, we include
+the current element.
+2. If $\pi_{i} + b_{i-1} < b_{i-1}$, then the current element does not increase
+the current MCSS, then we should not include this element. Since we are not 
+including it, the current subsequence has ended, and we start a new subsequence
+with $\pi_{i}$ being the first element. Thus, $b_i = \pi_{i}$. Then we update
+$i = i + 1$, and $ans = max(ans, b_i)$.
+
+The loop invariant holds for all cases. Since $ans$ keeps track of the MCSS, 
+after exiting the loop, $ans$ holds the MCSS of $pi$.
