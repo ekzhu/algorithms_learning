@@ -23,8 +23,10 @@ Proof: No increasing subsequence of `pi` can contain more than one number
 contained in any decreasing subsequence of `pi`, since the numbers in an
 increasing subsequence strictly increase from left to right, whereas the numbers
 in a decreasing subsequence are non-increasing left to right. Hence no
-increasing subsequence of `pi` can have lenght greater than the size of any
-cover of `pi`. Now assume the length of `I` is equal to the size of `C`. This
+increasing subsequence of `pi` can have length greater than the size of any
+cover of `pi` - sicne ther can be at most one number from each decreasing 
+subsequence also belongs to an increasing subsequence.
+Now assume the length of `I` is equal to the size of `C`. This
 implies that `I` is a longest increasing subsequence of `pi` because no other
 increasing subsequence can be longet than the size of `C`. Conversely, `C` must
 be a smallest cover of `pi`, for if there were a smaller cover `C'`, than `I`

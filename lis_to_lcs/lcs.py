@@ -19,7 +19,7 @@ def lcs(s1, s2):
         pos = []
         for i, y in enumerate(s2):
             if x == y:
-                pos.append(i)
+                pos = [i,] + pos
         pi += pos
     return [s2[i] for i in lis(pi, greedy_cover)]
 
@@ -31,3 +31,4 @@ if __name__ == "__main__":
     print "S1:", ''.join(s1)
     print "S2:", ''.join(s2)
     print "LCS", ''.join(lcs(s1, s2))
+    
